@@ -172,6 +172,8 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
  It may used for copy/paste plain text from attributed string.
  Example: If :) is replace by a custom emoji (such as😊), the backed string can be set to @":)".
  */
+
+//将emoji图片后的实际文字提取出来
 @interface YYTextBackedString : NSObject <NSCoding, NSCopying>
 + (instancetype)stringWithString:(nullable NSString *)string;
 @property (nullable, nonatomic, copy) NSString *string; ///< backed string
@@ -187,6 +189,9 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
  YYTextView will treat the range of text as a single character during text 
  selection and edit.
  */
+
+
+//文字捆绑，当处于编辑或者选定状态时，俩个文字串被当做一个整理对待；当需要删除的时候，需要用户确认一下confirm[貌似是用于shadow的]
 @interface YYTextBinding : NSObject <NSCoding, NSCopying>
 + (instancetype)bindingWithDeleteConfirm:(BOOL)deleteConfirm;
 @property (nonatomic) BOOL deleteConfirm; ///< confirm the range when delete in YYTextView
@@ -200,15 +205,20 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
  
  It's similar to `NSShadow`, but offers more options.
  */
+
+//设置富文本字体的阴影属性
 @interface YYTextShadow : NSObject <NSCoding, NSCopying>
 + (instancetype)shadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius;
 
 @property (nullable, nonatomic, strong) UIColor *color; ///< shadow color
+//阴影偏移
 @property (nonatomic) CGSize offset;                    ///< shadow offset
 @property (nonatomic) CGFloat radius;                   ///< shadow blur radius
+//混合模式
 @property (nonatomic) CGBlendMode blendMode;            ///< shadow blend mode
 @property (nullable, nonatomic, strong) YYTextShadow *subShadow;  ///< a sub shadow which will be added above the parent shadow
 
+//YYShadow和原生NSShadow之间的相互转换
 + (instancetype)shadowWithNSShadow:(NSShadow *)nsShadow; ///< convert NSShadow to YYTextShadow
 - (NSShadow *)nsShadow; ///< convert YYTextShadow to NSShadow
 @end
@@ -222,12 +232,16 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
  When it's used as underline, the line is drawn below text glyphs;
  when it's used as strikethrough, the line is drawn above text glyphs.
  */
+
+//下划线位置  一个在文字下方，一个在文字中间(可能是类似删除线那种的)
 @interface YYTextDecoration : NSObject <NSCoding, NSCopying>
 + (instancetype)decorationWithStyle:(YYTextLineStyle)style;
 + (instancetype)decorationWithStyle:(YYTextLineStyle)style width:(nullable NSNumber *)width color:(nullable UIColor *)color;
+//实线|虚线  【线条样式之类的】
 @property (nonatomic) YYTextLineStyle style;                   ///< line style
 @property (nullable, nonatomic, strong) NSNumber *width;       ///< line width (nil means automatic width)
 @property (nullable, nonatomic, strong) UIColor *color;        ///< line color (nil means automatic color)
+//线条阴影
 @property (nullable, nonatomic, strong) YYTextShadow *shadow;  ///< line shadow
 @end
 
@@ -245,12 +259,16 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
     │ Text │
     ╰──────╯
  */
+
+//文字外边框属性。可以是一串文字的外边框
 @interface YYTextBorder : NSObject <NSCoding, NSCopying>
 + (instancetype)borderWithLineStyle:(YYTextLineStyle)lineStyle lineWidth:(CGFloat)width strokeColor:(nullable UIColor *)color;
 + (instancetype)borderWithFillColor:(nullable UIColor *)color cornerRadius:(CGFloat)cornerRadius;
 @property (nonatomic) YYTextLineStyle lineStyle;              ///< border line style
 @property (nonatomic) CGFloat strokeWidth;                    ///< border line width
 @property (nullable, nonatomic, strong) UIColor *strokeColor; ///< border line color
+
+//kCGLineJoinMiter(直角), kCGLineJoinRound(圆角), kCGLineJoinBevel(平角)
 @property (nonatomic) CGLineJoin lineJoin;                    ///< border line join
 @property (nonatomic) UIEdgeInsets insets;                    ///< border insets for text bounds
 @property (nonatomic) CGFloat cornerRadius;                   ///< border corder radius

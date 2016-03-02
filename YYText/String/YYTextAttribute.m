@@ -147,6 +147,7 @@ YYTextAttributeType YYTextAttributeGetType(NSString *name){
 
 @implementation YYTextBinding
 
+//deleteConfirm为YES时，删除这个文字和他的外框border的时候，会先出现一个小蒙版盖住这个文字和他的border这个整体，再点击删除键才会顺利将其删除。但是如果这个值是no，则第一步就会直接将其整体删除了
 + (instancetype)bindingWithDeleteConfirm:(BOOL)deleteConfirm {
     YYTextBinding *one = [self new];
     one.deleteConfirm = deleteConfirm;

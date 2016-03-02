@@ -25,16 +25,17 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [YYTextExampleHelper addDebugOptionToViewController:self];
-
-    
+ 
     NSMutableAttributedString *text = [NSMutableAttributedString new];
     UIFont *font = [UIFont systemFontOfSize:16];
     
     {
         NSString *title = @"This is UIImage attachment:";
+        //纯文本后方拼接一个富文本【该富文本目前为止还是啥属性都没有的状态】
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:nil]];
         
-        UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
+        //
+        UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];//那张球的图片
         image = [UIImage imageWithCGImage:image.CGImage scale:2 orientation:UIImageOrientationUp];
         
         NSMutableAttributedString *attachText = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
@@ -78,7 +79,6 @@
         
         NSMutableAttributedString *attachText = [NSMutableAttributedString yy_attachmentStringWithContent:imageView contentMode:UIViewContentModeCenter attachmentSize:imageView.size alignToFont:font alignment:YYTextVerticalAlignmentBottom];
         [text appendAttributedString:attachText];
-        
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
     }
     

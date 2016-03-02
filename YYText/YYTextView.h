@@ -296,6 +296,7 @@ NS_ASSUME_NONNULL_BEGIN
  When the value of this property is YES, user can copy attributed text (with attachment image)
  from text view to pasteboard via "copy" menu.
  */
+//这个是否允许拷贝，他可以将整个富文本（不是单纯的纯文字部分）给赋值黏贴了 默认值是YES
 @property (nonatomic) BOOL allowsCopyAttributedString;
 
 

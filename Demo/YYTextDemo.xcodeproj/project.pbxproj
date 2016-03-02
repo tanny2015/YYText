@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20C651811C868E9B008E34D4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C651801C868E9B008E34D4 /* Reveal.framework */; };
+		20C651831C868EC1008E34D4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C651821C868EC1008E34D4 /* CFNetwork.framework */; };
 		ABDC31581BE9FB990012A159 /* YYTextContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDC31261BE9FB990012A159 /* YYTextContainerView.m */; };
 		ABDC31591BE9FB990012A159 /* YYTextDebugOption.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDC31281BE9FB990012A159 /* YYTextDebugOption.m */; };
 		ABDC315A1BE9FB990012A159 /* YYTextEffectWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDC312A1BE9FB990012A159 /* YYTextEffectWindow.m */; };
@@ -95,6 +97,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		20C651801C868E9B008E34D4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		20C651821C868EC1008E34D4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		ABDC31251BE9FB990012A159 /* YYTextContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextContainerView.h; sourceTree = "<group>"; };
 		ABDC31261BE9FB990012A159 /* YYTextContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTextContainerView.m; sourceTree = "<group>"; };
 		ABDC31271BE9FB990012A159 /* YYTextDebugOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextDebugOption.h; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C651831C868EC1008E34D4 /* CFNetwork.framework in Frameworks */,
 				ABDC31CE1BEA07290012A159 /* SystemConfiguration.framework in Frameworks */,
 				D975394B1BD289B400C6F4B8 /* MobileCoreServices.framework in Frameworks */,
 				ABDC31CC1BEA071B0012A159 /* ImageIO.framework in Frameworks */,
@@ -240,6 +245,7 @@
 				D97539551BD289C800C6F4B8 /* CoreFoundation.framework in Frameworks */,
 				D97539531BD289C400C6F4B8 /* UIKit.framework in Frameworks */,
 				D97539511BD289C000C6F4B8 /* QuartzCore.framework in Frameworks */,
+				20C651811C868E9B008E34D4 /* Reveal.framework in Frameworks */,
 				D975394F1BD289BC00C6F4B8 /* CoreText.framework in Frameworks */,
 				D975394D1BD289B800C6F4B8 /* Accelerate.framework in Frameworks */,
 			);
@@ -351,6 +357,8 @@
 		D975391D1BD2896100C6F4B8 = {
 			isa = PBXGroup;
 			children = (
+				20C651821C868EC1008E34D4 /* CFNetwork.framework */,
+				20C651801C868E9B008E34D4 /* Reveal.framework */,
 				ABDC31D71BEA0C5A0012A159 /* YYImage */,
 				ABDC31231BE9FB990012A159 /* YYText */,
 				D97539281BD2896100C6F4B8 /* YYTextDemo */,
@@ -693,9 +701,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = YYTextDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.YYTextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -706,9 +723,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = YYTextDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.YYTextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
