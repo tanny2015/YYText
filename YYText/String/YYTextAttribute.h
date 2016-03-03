@@ -291,7 +291,7 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
 + (instancetype)attachmentWithContent:(nullable id)content;
 @property (nullable, nonatomic, strong) id content;             ///< Supported type: UIImage, UIView, CALayer
 @property (nonatomic) UIViewContentMode contentMode;            ///< Content display mode.
-@property (nonatomic) UIEdgeInsets contentInsets;               ///< The insets when drawing content.
+@property (nonatomic) UIEdgeInsets      contentInsets;          ///< The insets when drawing content.
 @property (nullable, nonatomic, strong) NSDictionary *userInfo; ///< The user information dictionary.
 @end
 

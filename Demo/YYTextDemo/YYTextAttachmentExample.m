@@ -31,13 +31,15 @@
     
     {
         NSString *title = @"This is UIImage attachment:";
-        //纯文本后方拼接一个富文本【该富文本目前为止还是啥属性都没有的状态】
+        //1.纯文本后方拼接一个富文本【该富文本目前为止还是啥属性都没有的状态】
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:nil]];
         
-        //
+        //2.图片
         UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];//那张球的图片
+        //该方面使用一个CGImageRef创建UIImage，在创建时还可以指定方法倍数以及旋转方向。当scale设置为1的时候，新创建的图像将和原图像尺寸一摸一样，而orientaion则可以指定新的图像的绘制方向
         image = [UIImage imageWithCGImage:image.CGImage scale:2 orientation:UIImageOrientationUp];
         
+        //生成图片的富文本
         NSMutableAttributedString *attachText = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
         [text appendAttributedString:attachText];
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];

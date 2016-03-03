@@ -577,6 +577,7 @@ return style. _attr_;
                                                attachmentSize:(CGSize)attachmentSize
                                                   alignToFont:(UIFont *)font
                                                     alignment:(YYTextVerticalAlignment)alignment {
+    //\ufffc为对象占位符，目的是当富文本中有图像时，只复制文本信息！！！
     NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:YYTextAttachmentToken];
     
     YYTextAttachment *attach = [YYTextAttachment new];

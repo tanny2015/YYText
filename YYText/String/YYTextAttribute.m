@@ -39,6 +39,7 @@ NSString *const YYTextAttachmentAttributeName = @"YYTextAttachment";
 NSString *const YYTextHighlightAttributeName = @"YYTextHighlight";
 NSString *const YYTextGlyphTransformAttributeName = @"YYTextGlyphTransform";
 
+// \ufffc为对象占位符，目的是当富文本中有图像时，只复制文本信息！！！  
 NSString *const YYTextAttachmentToken = @"\uFFFC";
 NSString *const YYTextTruncationToken = @"\u2026";
 
